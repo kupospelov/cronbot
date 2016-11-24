@@ -1,0 +1,8 @@
+{
+    "Token" : "<BotToken>",
+    "OwnerId" : 123456,
+    "GreetMessage" : "This is the message I send on the /greet command.",
+    "StartMessage" : "Hello!",
+    "FinishMessage" : "Bye!",
+    "UnauthorizedMessage" : "Unauthorized."
+}

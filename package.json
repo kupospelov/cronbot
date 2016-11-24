@@ -1,0 +1,28 @@
+{
+  "name": "cronbot",
+  "version": "0.1",
+  "description": "A simple telegram bot to notify about some events and provide the options to reply.",
+  "engines": {
+    "node": "7.1.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "node-cron": "^1.1.2",
+    "telegraf": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kupospelov/cronbot"
+  },
+  "keywords": [
+    "node",
+    "telegram",
+	"notifier",
+	"cron",
+	"bot"
+  ],
+  "license": "MIT"
+}

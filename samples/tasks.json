@@ -1,0 +1,41 @@
+[
+	{
+		"Options" : [
+			{
+				"Option" : "Let's go!",
+				"OnRepeat" : "You don't have to repeat it any more."
+			},
+			{
+				"Option" : "I'll skip this time.",
+				"OnReply" : "Why?"
+			},
+			{
+				"Option" : "I'll be late.",
+				"OnReply" : "Don't be too late."
+			}
+		],
+
+		"Alarms" : [
+			{
+				"Name" : "Weekend Tea",
+				"ChatId" : 123456,
+				"Cron" : "0 10 * * 6-7",
+				"RandomDelay" : 120000,
+				"Messages" : [
+					"It's time to have some tea!",
+					"Don't you want to have a tea break?"
+				]
+			},
+			{
+				"Name" : "Routine Lunch",
+				"ChatId" : 654321,
+				"Cron" : "30 13 * * 1-5",
+				"RandomDelay" : 360000,
+				"Messages" : [
+					"Let's grab some food, colleagues.",
+					"It's time for a lunch break."
+				]
+			}
+		]
+	}
+]
