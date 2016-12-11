@@ -1,17 +1,22 @@
 [
 	{
+		"Timeout" : 3600000,
+
 		"Options" : [
 			{
 				"Option" : "Let's go!",
-				"OnRepeat" : "You don't have to repeat it any more."
+				"OnRepeat" : "You don't have to repeat it any more.",
+				"OnTimeout" : "Where are you going to?"
 			},
 			{
 				"Option" : "I'll skip this time.",
-				"OnReply" : "Why?"
+				"OnReply" : "Why?",
+				"OnTimeout" : "It seems you've already skipped it."
 			},
 			{
 				"Option" : "I'll be late.",
-				"OnReply" : "Don't be too late."
+				"OnReply" : "Don't be too late.",
+				"OnTimeout" : "You already are."
 			}
 		],
 

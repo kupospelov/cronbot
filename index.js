@@ -8,10 +8,10 @@ const tasks = require('./tasks.json');
 const app = new telegraf(config.Token);
 
 const createKeyboard = function(keys) {
-  return telegraf.Markup.keyboard(keys)
-    .oneTime()
-    .resize()
-    .extra();
+	return telegraf.Markup.keyboard(keys)
+		.oneTime()
+		.resize()
+		.extra();
 };
 
 app.telegram.getMe().then(
@@ -37,19 +37,26 @@ app.telegram.getMe().then(
 				app.hears(option.Option, ctx => {
 					const reply = ctx.update.message.reply_to_message;
 					const from = ctx.update.message.from;
+					const handle = message => {
+						if (message) {
+							ctx.reply(message);
+						}
+					};
 
 					if (reply && reply.from.id == bot.id) {
-						if (lastMessage.answers.find(a => a === from.id)) {
-							if (option.OnRepeat) {
-								ctx.reply(option.OnRepeat);
-							}
-						}
-						else {
-							if (option.OnReply) {
-								ctx.reply(option.OnReply);
-							}
+						switch (true) {
+							case Date.now() - lastMessage.time > task.Timeout:
+								handle(option.OnTimeout);
+								break;
 
-							lastMessage.answers.push(from.id);
+							case lastMessage.answers.find(a => a === from.id) !== undefined:
+								handle(option.OnRepeat);
+								break;
+
+							default:
+								handle(option.OnReply);
+								lastMessage.answers.push(from.id);
+								break;
 						}
 					}
 				});
