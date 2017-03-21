@@ -7,11 +7,16 @@ const tasks = require('./tasks.json');
 
 const app = new telegraf(config.Token);
 
-const createKeyboard = function(keys) {
-	return telegraf.Markup.keyboard(keys)
-		.oneTime()
-		.resize()
-		.extra();
+const handleKeyboard = function(config, task) {
+	if (config.ShowKeyboard) {
+		const keys = task.Options.map(o => o.Option);
+		return telegraf.Markup.keyboard(keys)
+			.oneTime()
+			.resize()
+			.extra();
+	}
+
+	return telegraf.Markup.removeKeyboard(true).extra();
 };
 
 app.telegram.getMe().then(
@@ -66,7 +71,7 @@ app.telegram.getMe().then(
 								app.telegram.sendMessage(
 									alarm.ChatId,
 									alarm.Messages[messageIndex],
-									createKeyboard(task.Options.map(o => o.Option)))
+									handleKeyboard(config, task))
 										.then(() => {
 											lastMessage.time = Date.now();
 											lastMessage.answers = [];
