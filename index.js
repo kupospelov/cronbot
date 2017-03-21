@@ -35,6 +35,7 @@ app.telegram.getMe().then(
 		tasks.forEach(task => {
 			task.Options.forEach(option => {
 				app.hears(option.Option, ctx => {
+					const elapsed = Date.now() - lastMessage.time;
 					const reply = ctx.update.message.reply_to_message;
 					const from = ctx.update.message.from;
 					const handle = message => {
@@ -43,20 +44,13 @@ app.telegram.getMe().then(
 						}
 					};
 
-					if (reply && reply.from.id == bot.id) {
-						switch (true) {
-							case Date.now() - lastMessage.time > task.Timeout:
-								handle(option.OnTimeout);
-								break;
-
-							case lastMessage.answers.find(a => a === from.id) !== undefined:
-								handle(option.OnRepeat);
-								break;
-
-							default:
-								handle(option.OnReply);
-								lastMessage.answers.push(from.id);
-								break;
+					if (reply && reply.from.id === bot.id && elapsed < config.Timeout) {
+						if (lastMessage.answers.find(a => a === from.id) !== undefined) {
+							handle(option.OnRepeat);
+						}
+						else {
+							handle(option.OnReply);
+							lastMessage.answers.push(from.id);
 						}
 					}
 				});

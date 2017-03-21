@@ -4,5 +4,6 @@
     "GreetMessage" : "This is the message I send on the /greet command.",
     "StartMessage" : "Hello!",
     "FinishMessage" : "Bye!",
-    "UnauthorizedMessage" : "Unauthorized."
+    "UnauthorizedMessage" : "Unauthorized.",
+    "Timeout" : 3600000
 }

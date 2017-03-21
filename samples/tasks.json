@@ -5,18 +5,15 @@
 		"Options" : [
 			{
 				"Option" : "Let's go!",
-				"OnRepeat" : "You don't have to repeat it any more.",
-				"OnTimeout" : "Where are you going to?"
+				"OnRepeat" : "You don't have to repeat it any more."
 			},
 			{
 				"Option" : "I'll skip this time.",
-				"OnReply" : "Why?",
-				"OnTimeout" : "It seems you've already skipped it."
+				"OnReply" : "Why?"
 			},
 			{
 				"Option" : "I'll be late.",
-				"OnReply" : "Don't be too late.",
-				"OnTimeout" : "You already are."
+				"OnReply" : "Don't be too late."
 			}
 		],
 
